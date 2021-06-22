@@ -73,6 +73,7 @@ Those are the Waypoint Updater(waypoint_updater.py), the Traffic Light Detection
    * final_waypoints
 
 **Decision making**
+
 The waypoint updater node publish final_waypoints whitch determines waypoints the car should follow. It subscribes car's state (/current_pose and /base_waypoints) and /traffic_waypoint.
 
 #### Traffic Light Detection & Classification (tl_detector.py)
@@ -83,7 +84,10 @@ The waypoint updater node publish final_waypoints whitch determines waypoints th
    * /image_color (optional)
  * Publish Topics
    * /traffic_waypoint
+
+
 **Decision making**
+
 It subscribes car's state (/current_pose and /base_waypoints) and traffic light's state(/vehicle/traffic_lights) and camera image(/image_color). This node shows the waypoint(/traffic_waypoint) which the car should stop.
 In this case, I tried to use tensorflow to recognize and classify the signal, but it did not work.
 So I converted the camera image(/image_color) to HSV and calculated the components to detect the red color and determine the color of the signal. I have confirmed that it works well on the simulator, but I think it is difficult to implement it in real space because it is easily affected by signboards and sunlight.
@@ -97,8 +101,10 @@ So I converted the camera image(/image_color) to HSV and calculated the componen
    * /vehicle/steering_cmd
    * /vehicle/throttle_cmd
    * /vehicle/brake_cmd
-  
+
+
 **Decision making**
+
 In case dbw_enabled is set to true, Drive-By-Wire (DBW) Node works. It subscribes /twist_cmd include throttle, brake and steering values with the help of a PID-controller and Lowpass filter. The dbw node directly publishes /vehicle commands for the car/simulator.
 
 
