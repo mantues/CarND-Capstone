@@ -37,8 +37,8 @@ docker run -p 4567:4567 -v $PWD:/capstone -v /tmp/log:/root/.ros/ --rm -it capst
 ```bash
 (official github)
 git clone https://github.com/udacity/CarND-Capstone.git
-or
-unzip project.zip
+
+pip install pillow==6.2.1
 ```
 
 ##### 2. Install python dependencies
